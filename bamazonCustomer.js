@@ -125,8 +125,6 @@ function confirmPrompt(res, inqQuan) {
 				.then(function(inqRes) {
 					if (inqRes.confirm) {
 						console.log("Your order has been placed!");
-						console.log("Product name: " + res[0].product_name);
-						console.log("Product quantity: " + res[0].stock_quantity);
 						var newQuan = res[0].stock_quantity- inqQuan;
 						updateQunatity(res, newQuan);
 						

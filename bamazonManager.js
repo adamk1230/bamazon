@@ -24,13 +24,13 @@ connection.connect(function(err) {
  
 });
 
-function initialPrompt () {
+function initialPrompt() {
 	inquirer
   		.prompt([
   			{
 				type: "list",
 				message: "What would you like to do?",
-				choices: ["View Products For Sale", "View Low Inventory", "Add to Inventory", "Add New Product"],
+				choices: ["View Products For Sale", "View Low Inventory", "Add to Inventory", "Add New Product", "Exit"],
 				name: "command"
 		    }
 		])
@@ -50,6 +50,9 @@ function initialPrompt () {
 			case "Add New Product":
 				newItem();
 				break;
+			case "Exit":
+				console.log("\n Your session has ended.");
+      			connection.destroy();
 		}
 
 
@@ -75,6 +78,10 @@ function viewProducts(){
 
 
     	}
+
+    	initialPrompt();
+
+
     
   });
 }
@@ -92,6 +99,10 @@ function lowInventory() {
 
     	}
     console.log("==================================");
+
+    initialPrompt();
+
+
   });
 }
 
@@ -181,14 +192,14 @@ function confirmPrompt(res, inqQuan) {
 				.then(function(inqRes) {
 					if (inqRes.confirm) {
 						console.log("The inventory has been restocked!");
-						console.log("Product name: " + res[0].product_name);
 						var newQuan = res[0].stock_quantity + inqQuan;
 						updateQunatity(res, newQuan);
+						
 						
 					}
 
 					else {
-						console.log("Your order has NOT been placed.");
+						console.log("Your inventory has NOT been restocked.");
 						regretsPrompt(res);
 					}
 
@@ -210,8 +221,8 @@ function updateQunatity(res, newQuan) {
     ],
     function(err, res) {
 
-      console.log("\n The inventory has been updated!");
-      connection.destroy();
+      console.log("\n The inventory database has been updated!");
+      initialPrompt();
      
     }
   );
@@ -233,7 +244,7 @@ function regretsPrompt (res) {
 				quantityPrompt(res);
 			}
 			else {
-				viewProducts();	
+				initialPrompt();	
 			}
 
 
@@ -279,6 +290,7 @@ function newItem() {
     function(err, res) {
       console.log(res.affectedRows + " product inserted!\n");
       // Call updateCrud AFTER the INSERT completes
+      initialPrompt();
       
     }
   );
