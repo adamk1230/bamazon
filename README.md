@@ -16,6 +16,33 @@ Customer App
 
 Manager App
 
- ![1initial_prompt.jpg](/manager_demo/1initial_prompt.jpg)
+1.
+
+![1initial_prompt.jpg](/manager_demo/1initial_prompt.jpg)
+
+
+
+2.  
+
+![2view_products_for_sale.jpg](/manager_demo/2view_products_for_sale.jpg)
+
+
  
- 
+3.
+
+![3view_low_inventory.jpg](/manager_demo/3view_low_inventory.jpg)
+
+
+
+4.
+
+![4add_inventory.jpg](/manager_demo/4add_inventory.jpg)
+
+
+
+5.
+
+![5add_inventory.jpg](/manager_demo/5add_inventory.jpg)
+
+
+
